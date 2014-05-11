@@ -4,7 +4,9 @@
 	version="2.0">
 	<persistence-unit name="todos" transaction-type="RESOURCE_LOCAL">
 		<description>Persistence unit for JPA Demos</description>
+		<!-- single -->
 		<class>emg.demos.persistence.Todo</class>
+		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test" />
@@ -13,9 +15,29 @@
 
 			<!-- EclipseLink should create the database schema automatically -->
 			<property name="eclipselink.ddl-generation" value="create-tables" />
-			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="database" />
 		</properties>
 
 	</persistence-unit>
+    <persistence-unit name="people" transaction-type="RESOURCE_LOCAL">
+        <description>Persistence unit for JPA Demos</description>
+        <!-- relationship -->
+        <class>emg.demos.persistence.model.relationship.Person</class>
+        <class>emg.demos.persistence.model.relationship.Family</class>
+        <class>emg.demos.persistence.model.relationship.Job</class>
 
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test" />
+            <property name="javax.persistence.jdbc.user" value="edison" />
+            <property name="javax.persistence.jdbc.password" value="edison" />
+
+            <!-- EclipseLink should create the database schema automatically -->
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+            <property name="eclipselink.ddl-generation.output-mode"
+                value="database" />
+        </properties>
+
+    </persistence-unit>
 </persistence>

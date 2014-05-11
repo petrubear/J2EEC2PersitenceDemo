@@ -1,13 +1,16 @@
-package emg.demos.persistence;
+package emg.demos.persistence.model.single;
 
 import javax.persistence.*;
 
 @Entity
+@NamedQuery (name = "findAllTodos", query = "SELECT t from Todo t")
 public class Todo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable = false)
 	private String summary;
+	@Column(length = 2000)
 	private String description;
 
 	public String getSummary() {
